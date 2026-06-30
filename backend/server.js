@@ -698,7 +698,7 @@ app.get('/api/teal/ruq/:id', (req, res) => {
 });*/
 
 app.get('/api/themes', (req, res) => {
-    fs.readdir("/frontend/themes", (err, files) => {
+    fs.readdir("/frontend/assets/themes", (err, files) => {
         if (err)
             console.log(err);
         else {
