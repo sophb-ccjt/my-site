@@ -1,0 +1,75 @@
+body {
+  background-color: #533;
+  text-align: center;
+  vertical-align: middle;
+  --bg: #c77;
+  color: var(--bg);
+  font-family: monospace;
+  text-shadow: 0px 0px 3px #55333388;
+  font-size: 16px;
+}
+
+a {
+  color: #f66;
+}
+
+a:visited {
+  color: #c5a;
+}
+
+div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, button, select {
+  outline: none;
+  box-sizing: border-box;
+  font: inherit;
+  text-shadow: inherit;
+  background-color: #c77;
+  transition-duration: 250ms;
+}
+
+input, select {
+  border: 3px inset #55333340;
+}
+
+button {
+  border: 3px outset #55333340;
+}
+
+input::placeholder {
+  color: #55333355;
+}
+
+input:focus {
+  background-color: #e99
+}
+
+button:hover, select:hover {
+  background-color: #e99;
+}
+
+button:active, select:active {
+  background-color: #a66;
+}
+
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.chatlog-div {
+  overflow-wrap: break-word;
+  height: 75%;
+}
+
+.big-btn {
+  vertical-align: middle;
+  height: 256px;
+  width: 256px;
+}

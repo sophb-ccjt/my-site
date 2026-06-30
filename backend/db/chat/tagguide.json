@@ -1,0 +1,22 @@
+{
+    "owner": {
+        "text": "OWNER",
+        "color": "#f00"
+    },
+    "coowner": {
+        "text": "CO-OWNER",
+        "color": "#f0f"
+    },
+    "admin": {
+        "text": "ADMIN",
+        "color": "#ff0"
+    },
+    "mod": {
+        "text": "MOD",
+        "color": "#0f0"
+    },
+    "bot": {
+        "text": "BOT",
+        "color": "#00f"
+    }
+}

@@ -1,0 +1,103 @@
+body {
+  background-color: #1f2430;
+  text-align: center;
+  vertical-align: middle;
+  --bg: #e0e4ec;
+  color: var(--bg);
+  font-family: monospace;
+  text-shadow: 1px 1px 2px #2b2f3a7f;
+  font-size: 14px;
+}
+
+a {
+  color: #9fc9f3;
+}
+
+a:visited {
+  color: #c9a6f7;
+}
+
+div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, button, select {
+  outline: none;
+  box-sizing: border-box;
+  font: inherit;
+  text-shadow: inherit;
+  background-color: #394153;
+  color: #e0e4ec;
+  transition-duration: 75ms;
+}
+
+input, select {
+  border: 5px ridge #222;
+}
+
+button {
+  border: 5px ridge #222;
+}
+ 
+input::placeholder {
+  color: #a2a7b055;
+  opacity: 90%;
+}
+
+input:hover::placeholder {
+  color: #ffffffdd;
+}
+input:focus::placeholder {
+  color: #fff;
+  font-weight: bolder;
+}
+
+input:focus {
+  background-color: #505a70;
+}
+
+input[type='range'], input[type='radio'], input[type='checkbox'] {
+  accent-color: #606c87;
+}
+input:hover {
+  font-size: 15.5px;
+  font-weight: bolder;
+}
+
+button:hover, select:hover {
+  background-color: #505a70;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+button:active, select:active {
+  background-color: #3a4254;
+  font-size: 13px;
+  font-weight: lighter;
+}
+
+option, option:hover, option:focus, option:active {
+  color: #fff;
+  font-size: 16px;
+  font-weight: inherit;
+}
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.chatlog-div {
+  overflow-wrap: break-word;
+  height: 75%;
+}
+
+.big-btn {
+  vertical-align: middle;
+  height: 256px;
+  width: 256px;
+}

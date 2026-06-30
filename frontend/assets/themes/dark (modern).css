@@ -1,0 +1,134 @@
+html {
+  min-height: 100%;
+}
+body {
+  background-color: #0a0a0a;
+  /*background: repeating-linear-gradient(
+    #080808 5px,
+    #101010 0px,
+    #101010 10px
+    );*/
+  background: radial-gradient(#101010 0%, #080808 100%);
+  min-height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  --bg: #e0e4ec;
+  color: var(--bg);
+  font-family: monospace;
+  text-shadow: 0px 0px 15px #fff8;
+  font-size: 14px;
+}
+
+a {
+  color: #fff;
+}
+
+a[href] {
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  color: #00c0ff
+}
+a[href]:hover {
+  font-size: calc(1em * 1.2);
+  font-weight: bolder;
+}
+a:visited {
+  color: #c000ff;
+}
+
+div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, button, select {
+  outline: none;
+  box-sizing: border-box;
+  font: inherit;
+  text-shadow: inherit;
+  background-color: #333;
+  color: #eff;
+  border-width: 5px;
+  border-top-color: #888;
+  border-left-color: #888;
+  border-bottom-color: #000;
+  border-right-color: #000;
+  transition-duration: 250ms;
+  will-change: transform, font-size, font-weight, color;
+  transition-timing-function: ease-in-out;
+  border-style: outset solid solid outset;
+  margin: 2px;
+  text-shadow: 0px 0px 5px #fffa;
+}
+
+input[type='text'] {
+  border-top-color: #000;
+  border-left-color: #000;
+  border-bottom-color: #aaa;
+  border-right-color: #aaa;
+  border-style: solid outset outset solid;
+}
+input::placeholder {
+  color: #a2a7b055;
+  opacity: 90%;
+}
+
+input[type='checkbox']:hover {
+  transform: scale(1.25);
+}
+input:hover::placeholder {
+  color: #ffffffdd;
+}
+input:focus::placeholder {
+  color: #fff;
+  font-weight: bold;
+}
+
+input:focus {
+  background-color: #505a70;
+}
+
+input[type='range'], input[type='radio'], input[type='checkbox'] {
+  accent-color: #444;
+}
+input:hover {
+  font-size: 15.5px;
+  font-weight: bolder;
+}
+
+button:hover, select:hover {
+  background-color: #505a70;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+button:active, select:active {
+  background-color: #3a4254;
+  font-size: 13px;
+  font-weight: lighter;
+}
+
+option, option:hover, option:focus, option:active {
+  color: #fff;
+  font-size: 16px;
+  font-weight: inherit;
+}
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.chatlog-div {
+  overflow-wrap: break-word;
+  height: 75%;
+}
+
+.big-btn {
+  vertical-align: middle;
+  height: 256px;
+  width: 256px;
+}

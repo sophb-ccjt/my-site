@@ -1,0 +1,52 @@
+body {
+  --bg: #000;
+  background-color: var(--bg);
+  text-align: center;
+}
+h1 {
+  font-family: "Monaco", "Courier New", monospace;
+  color: white;
+}
+h2 {
+  font-family: "Monaco", "Courier New", monospace;
+  color: white;
+}
+h3, h4, h5 {
+  font-family: "Monaco", "Courier New", monospace;
+  color: white;
+}
+a {
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: #888
+}
+a:visited {
+  color: #444;
+}
+div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.chatlog-div {
+  overflow-wrap: break-word;
+  height: 75%;
+}
+.p1 {
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: #fff
+}
+.p2 {
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: #fff
+}
+.big-btn {
+  vertical-align: middle;
+  height: 256px;
+  width: 256px;
+}

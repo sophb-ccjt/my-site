@@ -1,0 +1,36 @@
+<!--
+add:
+theme selector dropdown // done
+electroboom quote // done
+links to subpages // done
+fav song // done
+cat from catass // done
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ccjt's site</title>
+        <link rel='stylesheet' id = 'css' href='./themes/light.css'>
+    </head>
+    <body>
+        <div style='background-color: #0008; position: fixed; right: 0px; top: 0px; margin: 15px; padding: 0px 10px; width: fit-content; height: fit-content; padding-top: -4px; padding-bottom: 8px;'>
+            <h3>theme:</h3>
+            <select id='theme-dropdown'>
+
+            </select>
+        </div>
+        <h1>welcome to my site!</h1>
+        <button onclick='fetchquote()'>new quote</button><br>
+        <small><i><b><a id='quote' style='display: inline-block; overflow-wrap: break-word; width: 50%;'>loading page...</a></i></b></small>
+        <br><br>
+        <h2>subpages:</h2>
+        <a href="/chat">chatting site</a>
+        <br><br>
+        <h3>fav song</h3>
+        <iframe width="480" height="360" src="https://www.youtube.com/embed/WPInRYuOigA?si=aqD62GRyTYU6Czrf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <br><br>
+        <h3>cat</h3>
+        <img src='https://cataas.com/cat' width=300 title='meow' id='cat' alt='kitty'/>
+        <script src="./js.js"></script>
+    </body>
+</html>

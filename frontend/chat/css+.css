@@ -1,0 +1,84 @@
+.chatlog-div {
+    position: fixed;
+    width: 70%;
+    height: 90vh;
+    text-wrap: wrap;
+    white-space: collapse;
+    overflow-x: clip;
+    overflow-y: scroll;
+    left: 50%;
+    transform: translateX(-50%);
+    scroll-behavior: smooth;
+    transition: background-color .15s ease-out,
+    padding 50ms ease-out,
+    box-shadow .15s ease-out;
+    padding: 0px 7.5px;
+    z-index: 100;
+}
+
+.abg {
+    background-color: #0008;
+    border-radius: 15px;
+    padding: 2.5px;
+}
+
+.settings {
+    position: fixed;
+    top: 50%;
+    width: fit-content;
+    height: fit-content;
+    background-color: #000b;
+    transform: translateY(-50%);
+    padding: 7.5px;
+    transition: right .5s ease-out,
+    left .5s ease-out,
+    border-radius .5s ease-out,
+    opacity .5s ease-in-out;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.userlist {
+    position: fixed;
+    top: 10px;
+    background-color: #0008;
+    width: fit-content;
+    height: fit-content;
+    transition: opacity 0.25s ease-out;
+    padding: 5px 7.5px;
+    z-index: 99;
+}
+
+.bottom-div {
+    white-space: nowrap;
+    max-width: 100%;
+    z-index: 100;
+}
+.corner-div {
+    position: relative;
+    right: 10px;
+    bottom: 10px;
+}
+
+.band-dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 0%;
+    width: 100%;
+    height: auto;
+    transform: translate(0%, -50%);
+    background-color: #000c;
+    z-index: 128;
+}
+
+.replytag {
+    text-shadow: 0px 0px 2px #fff;
+    transition: text-shadow 250ms ease-out;
+}
+
+.msgoptions {
+    position: relative;
+    z-index: 255;
+    display: none;
+}

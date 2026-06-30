@@ -1,0 +1,75 @@
+body {
+  background-color: #335;
+  text-align: center;
+  vertical-align: middle;
+  --bg: #aac;
+  color: var(--bg);
+  font-family: monospace;
+  text-shadow: 1px 1px 2px #3333557f;
+  font-size: 14px;
+}
+
+a {
+  color: #bbf;
+}
+
+a:visited {
+  color: #fbb;
+}
+
+div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, button, select {
+  outline: none;
+  box-sizing: border-box;
+  font: inherit;
+  text-shadow: inherit;
+  background-color: #aac;
+  transition-duration: 100ms;
+}
+
+input, select {
+  border: 3px ridge #33335540;
+}
+
+button {
+  border: 3px groove #33335540;
+}
+
+input::placeholder {
+  color: #33335555;
+}
+
+input:focus {
+  background-color: #cce
+}
+
+button:hover, select:hover {
+  background-color: #cce;
+}
+
+button:active, select:active {
+  background-color: #88a;
+}
+
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.chatlog-div {
+  overflow-wrap: break-word;
+  height: 75%;
+}
+
+.big-btn {
+  vertical-align: middle;
+  height: 256px;
+  width: 256px;
+}

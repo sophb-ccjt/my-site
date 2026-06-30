@@ -1,0 +1,170 @@
+@font-face {
+  font-family: 'Jost';
+  src: url('../fonts/Jost.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'UbuntuBold';
+  src: url('../fonts/Ubuntu-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotatebg {
+  to {
+    --angle: 360deg;
+  }
+}
+
+:root {
+  interpolate-size: allow-keywords;
+}
+html {
+  min-height: 100vh;
+}
+body {
+  --bg: #0d0326;
+  background-color: var(--bg);
+  background: repeating-conic-gradient(from var(--angle), #204 0%,  #204 15.6666666667%, #103 16.16666667%, #204 16.66666667%);
+  animation: rotatebg 60s linear infinite running;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100%;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "UbuntuBold", sans-serif;
+  color: white;
+}
+
+/*h1:hover, h2:hover, h3:hover, h4:hover, h5:hover {
+  font-weight: normal;
+}*/
+
+a {
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+  font-family: "Jost", sans-serif;
+  color: #963bff;
+  text-shadow: 0px 0px 5px #963bff;
+}
+
+a[href]:hover {
+  font-size: 18px;
+  font-weight: bold; 
+}
+a:visited {
+  color: #aa62fc;
+}
+div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.chatlog-div {
+  overflow-wrap: break-word;
+  height: 75%;
+}
+.p1 {
+  font-family: "Jost", sans-serif;
+  color: #d6b3ff
+}
+.p2 {
+  font-family: "Jost", sans-serif;
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: #fff
+}
+.big-btn {
+  vertical-align: middle;
+  height: 256px;
+  width: 256px;
+}
+
+iv {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, button, select {
+  interpolate-size: allow-keywords;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+  font-weight: bold;
+  text-shadow: inherit;
+  color: #ffffff;
+  background-color: #8c35f0;
+  will-change: font-size, border-radius;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+  border-style: double;
+  border-radius: 15px;
+}
+option {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+input, select {
+  border: 3px ridge #33335540;
+}
+
+button {
+  border: 3px double #33335540;
+}
+
+button:active, input:active, select:active {
+  border-radius: 0px;
+  font-weight: lighter;
+}
+
+div {
+  transition: padding 0.25s ease-in-out
+}
+input::placeholder {
+  font-family: "Jost", sans-serif;
+  font-weight: lighter;
+  color: #b578fa;
+}
+
+button:hover, select:hover {
+  font-size: 100%;
+  background-color: #b37af5;
+}
+
+input:hover, input:focus {
+  background-color: #70f;
+  color: #fff
+}
+
+input:hover {
+  font-size: 91%
+}
+
+button:active, select:active {
+  background-color: #70f;
+}
+
+input[type="range"], input[type="checkbox"], input[type="radio"], progress {
+  accent-color: #70f;
+}
+
+input[type="checkbox"]:hover {
+  transform: scale(1.25)
+}

@@ -1,0 +1,41 @@
+body {
+  --bg: #aac;
+  background-color: #335;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--bg);
+  font-family: monospace;
+  font-size: 14px;
+}
+
+a {
+  color: #bbf;
+}
+
+a:visited {
+  color: #fbb;
+}
+
+div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.chatlog-div {
+  overflow-wrap: break-word;
+  height: 75%;
+}
+
+.big-btn {
+  vertical-align: middle;
+  height: 256px;
+  width: 256px;
+}

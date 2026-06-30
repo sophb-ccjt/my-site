@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ccjt's chat</title>
+  <link rel="stylesheet" id="css" href="../themes/light.css">
+  <link rel="stylesheet" id="css-add" href="./css+.css">
+  <link rel="icon" type="image/x-icon" href="./favicon.png">
+</head>
+
+<body style="overflow: hidden;">
+  <div class='chatlog-div' id="chatlog">
+    <a>New chat messages go here.</a>
+  </div>
+  <a class='abg info' style="position: fixed; top: 10px; z-index: 100;" id='online-count'>Loading page...</a>
+  <a class='abg info' style="position: fixed; top: 2.5rem; z-index: 100;" id='ping'>Ping: ???ms</a>
+  <a class='abg info' style="position: fixed; bottom: 10px; right: 10px; z-index: 100;" id='version'>chat version: v2.0.0-beta4</a>
+  <div id="userlist-div" class='userlist'>
+    <a id='users-show'>Users show up here.</a>
+  </div>
+  <div id="join-div" class='band-dialog'>
+    <b><a id="motd-text" class='p1' style="font-size: 24px">Connecting...</a></b>
+    <br><a style='color: #fff; text-shadow: 0px 0px 5px #fff;'>This is an open beta version of /chat v2. Expect bugs.</a>
+    <div id='enter-disclaimer' style='display: none;'><a><small>(press enter or escape to close this dialog.)</small></a></div><br><br>
+    <button id='closemotd-btn' onclick="document.getElementById('join-div').style.display = 'none'" style="display: none;">close and proceed to chat</button>
+  </div>
+  <div class='settings' id='settings-div'>
+    <a class='p1' id='goback' href='https://ccjt.israeli.ovh'>go back</a><br><br>
+    <a style="font-size: 24px; color: #fff"><b>settings</b></a><br>
+    <div id="settings-page1" style="display: inline-block;">
+      <h3 class='p1'>cosmetics (1)</h3>
+      <button type='button' id="userset-btn">set your user</button><br><br>
+      <a class="p1">theme:</a><br>
+      <select id="theme-dropdown">
+      </select><br>
+      <button id='updthemes-btn' type='button'>refresh themes</button><br><br>
+      <a class='p1'>chat align:</a><br>
+      <select id="align-dropdown">
+        <option value="left">Left </option>
+        <option value="center"> Middle </option>
+        <option value="right"> Right</option>
+      </select>
+    </div>
+    <div id="settings-page2" style="display: none;">
+      <h3 class='p1'>cosmetics (2)</h3>
+      <a class='p1'>new layout? </a><input type='checkbox' id='new-layout'/><br>
+      <a><small>(refreshes to apply)</small></a><br><br>
+      <button type="button" onclick="hideUI()">hide UI</button><br><br>
+      <a class='p1'>show message ids?</a>
+      <input type="checkbox" id="show-msgids"/><br>
+      <a class='p1'>show timestamps?</a>
+      <input type="checkbox" id="show-timestamps"/><br><br>
+      <a class='p1'>recent at bottom?</a>
+      <input type="checkbox" id="recent-bottom"/>
+    </div>
+    <div id="settings-page3" style="display: none;">
+      <h3 class='p1'>cosmetics (3)</h3>
+      <a class="p1">cursor size:</a><br>
+      <select id="cursorsize-dropdown">
+        <option value="10px">ultra small</option>
+        <option value="16px">small</option>
+        <option value="24px">mid-size</option>
+        <option value="32px">medium (default)</option>
+        <option value="48px">large</option>
+      </select><br>
+      <a style='font-size: 85%;'><small>(you may need to refresh to properly apply.)</small></a><br>
+      <a style='font-size: 70%;'><small>(css hates me lolol)</small></a><br><br>
+      <a class='p1'>message colored as user? </a><input type='checkbox' id='msg-color' /><br><br>
+      <a class='p1'>smooth cursors?</a> <input type='checkbox' id='smooth-cursors'/><br>
+      <a class='p1'>smooth usernames?</a> <input type='checkbox' id='smooth-usernames'/>
+    </div>
+    <div id="settings-page4" style="display: none;">
+      <h3 class='p1'>cosmetics (4)</h3>
+      <a class='p1'>cursor texture:</a><br>
+      <select id='cursor-texture'>
+      </select><br>
+      <button onclick='getCursors()'>refresh texture list</button><br><br>
+      <a class='p1'>modern usernames? </a><input type='checkbox' id='modern-names'/><br>
+      <a><small>(refreshes to apply)</small></a><br><br>
+      <a class='p1'>modern tags? </a><input type='checkbox' id='modern-tags'/>
+    </div>
+    <div id="settings-page5" style="display: none;">
+      <h3 class='p1'>sounds</h3>
+      <a class="p1">soundpack:</a><br>
+      <select id="soundpack-dropdown">
+      </select><br><br>
+      <button type="button" id="refresh-sp-btn">update soundpacks</button><br>
+      <button type="button" id="preview-sp-btn">preview soundpack</button><br><br>
+      <a class="p1">volume:</a><br>
+      <input type='range' id="sp-volume"></input><a id='volume-text' style='color: #fff'> (67%)</a>
+    </div>
+    <div id="settings-page6" style="display: none;">
+      <h3 class='p1'>misc.</h3>
+      <a class="p1">token</a><br>
+      <input type='text' id='token-input' placeholder="enter token..." size="15"></input><br>
+      <button onclick="localStorage.token = document.getElementById('token-input').value; window.location.reload()">apply token</button><br><br>
+      <a class="p1">ask before updating? </a><input type='checkbox' id='confirm-update'/><br><br>
+      <input type='file' id='imp-settings' style='display: none;'/>
+      <button onclick='document.getElementById("imp-settings").click()'>import settings</button><br>
+      <button id='exp-settings' onclick="let settings = JSON.parse(JSON.stringify(localStorage)); delete settings.token; exportfile('ccjt chat settings.txt', btoa(JSON.stringify(settings)))">export settings</button>
+    </div>
+    <br><br><a class='p1'>Page:</a><br>
+    <input type="range" min="1" max="1" value="1" step="1" id="settings-page"></input><a id="settings-pagenum" class='p1'> (1)</a><br>
+  </div>
+
+  <a id='about-text' style='background-color: #0008; position: fixed; z-index: 100;'>made in 2025 by ccjt with help of cheezburger0</a>
+  <img src="./favicon.png" style="position: fixed; z-index: 100;" id="icon"></img>
+  
+  <div class='band-dialog' style='display: none;' id="delete-confirm">
+    <h3>are you sure you wanna delete this message?</h3>
+    <a>message:</a><br>
+    <b><a id='delcon-name'></a></b><a id='delcon-text' class='p1'></a><br><br>
+    <button onclick='client.send({ m: "delete", target: deleting }); document.getElementById("delete-confirm").style.display = "none"'>yes</button> 
+    <button onclick='document.getElementById("delete-confirm").style.display = "none"'>no</button>
+  </div>
+  <div class='band-dialog' style='display: none;' id="update-confirm">
+    <h3>it looks like an update was pushed to the site.</h3>
+    <a id='upd-text'>refresh now?</a><br><br>
+    <button onclick="document.getElementById('upd-text').textContent = 'refreshing...'; window.location.reload();">yes</button> <button onclick="document.getElementById('update-confirm').style.display = 'none';">no</button>
+  </div>
+  <div class='band-dialog' id="userset-div">
+    <a><b>Username:</b></a>
+    <input type="text" maxlength=40 size=20 id="set-name" placeholder="username..."></input><br>
+    <a><b>Color:</b></a>
+    <input type="color" id="set-color"></input><br>
+    <a><b>Or type it:</b></a>
+    <input type="text" maxlength=7 id="set-color-type" placeholder="color... (can be #xxx)"></input><br>
+    <button type='button' id="set-user">submit</button>
+  </div>
+  <div class='band-dialog' id="preview-div">
+    <a id='preview-sp-name'></a><br><br>
+    <button type='button' onclick="msgsound()">Message sound (when tabbed out)</button><br>
+    <button type='button' onclick="joinsound()">User joined sound</button><br>
+    <button type='button' onclick="leavesound()">User left sound</button><br>
+    <button type='button' onclick="mentionsound()">Mention sound</button><br>
+    <button type='button' onclick="replysound()">Reply sound</button><br>
+    <button type='button' onclick="updatesound()">Update request sound</button><br><br>
+    <button type='button' onclick="document.getElementById('preview-div').style.display = 'none'">hide</button>
+  </div>
+  <div class="bottom-div" style="background-color: #000c; width: fit-content; left: 50%; transform: translate(-50%, 0%); padding: 4px; border-radius: 5px; display: flex; flex-wrap: nowrap;" id="chat-div">
+    <input type="text" maxlength="512" id="chat-input" size="64" placeholder="put text here and chat UwU" autocomplete="off"></input>
+    <button id="send" onclick="sendbtn()">send</button>
+  </div>
+  <div id='cursors-div'></div>
+  <script src="./emitter.js"></script>
+  <script src="./js.js"></script>
+
+</body>
+
+</html>

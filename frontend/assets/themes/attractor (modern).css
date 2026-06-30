@@ -1,0 +1,124 @@
+body {
+  --bg: #000;
+  background: url('../images/attr.gif');
+  background-color: var(--bg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: center;
+  background-position-y: center;
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+  text-shadow: 1px 1px 2px #888b;
+  font-size: 14px;
+  z-index: 0;
+}
+body::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-image: url('../images/attr.gif');
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 25%;
+  z-index: -67;
+}
+
+h1, h2, h3, h4, h5 {
+   font-family: monospace;
+   color: #a3ffe7; 
+}
+a {
+  color: #39bd9a;
+  text-shadow: 0px 0px 5px #a3ffe7;
+}
+
+a:visited {
+  color: #35deb1;
+}
+
+div {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, button, select, option {
+  outline: none;
+  font: inherit;
+  font-size: 15px;
+  text-shadow: inherit;
+  margin: 3px;
+  background-color: #43CDA8;
+  color: #fff;
+  transition: font-size 100ms ease-out;
+  border-style: outset;
+  border-width: 10px;
+}
+input[type='text'] {
+  background-color: #3fbf9d;
+  border-style: inset;
+}
+input[type='range'], input[type='checkbox'], input[type='radio'] {
+  accent-color: #43CDA8;
+}
+input:not([type='range']), button, select {
+  box-shadow: 0px 0px 5px #43CDA8;
+}
+input:hover, button:hover, select:hover {
+  background-color: #43CDA8a0;
+}
+input:active, button:active, select:active {
+  color: #fffd;
+  font-size: 12px;
+}
+input:focus::placeholder {
+  color: #fffd;
+  font-size: 14px;
+}
+
+input, select {
+  border: 3px ridge #39bd9a40;
+}
+
+button {
+  border: 3px groove #35deb140;
+}
+
+input::placeholder {
+  color: #fff;
+}
+
+input:focus {
+  background-color: #35deb1a0
+}
+
+button:hover, select:hover {
+  background-color: #35deb1a0;
+}
+
+button:active, select:active {
+  background-color: #35deb1d0;
+}
+
+.bottom-div {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.chatlog-div {
+  overflow-wrap: break-word;
+  height: 75%;
+}
+
+.big-btn {
+  vertical-align: middle;
+  height: 256px;
+  width: 256px;
+}
