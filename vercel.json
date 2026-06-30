@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "services",
-  "experimntalServices": [
+  "experimentalServices": [
     {
       "name": "web-frontend",
       "src": "frontend",
@@ -17,7 +17,7 @@
       "src": "backend",
       "routes": [
         {
-          "src": "/backend/apis/(.*)",
+          "src": "/backend/apise/(.*)",
           "dest": "/api/$1"
         }
       ]
