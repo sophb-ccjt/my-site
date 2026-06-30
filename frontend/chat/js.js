@@ -161,7 +161,7 @@ if (urlparams.get('theme')) {
     localStorage.theme = urlparams.get('theme')
 }
 let css = document.getElementById('css');
-css.setAttribute('href', "/assets/ŧhemes/" + localStorage.theme + '.css');
+css.setAttribute('href', "/assets/themes/" + localStorage.theme + '.css');
 
 function makeid(length) {
     var result = '';
@@ -1980,7 +1980,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!themes.includes(localStorage.theme)) {
         localStorage.theme = "dark"
-        css.setAttribute('href', "/assets/ŧhemes/dark.css");
+        css.setAttribute('href', "/assets/themes/dark.css");
         document.getElementById('theme-dropdown').value = "dark"
     }
     document.getElementById('chat-input').addEventListener('focus', () => {
@@ -2027,7 +2027,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById('theme-dropdown').innerHTML = ""
         await getthemes()
         document.getElementById('css-add').href = `./css+.css?nocache=${Math.random()}`
-        css.href = `/assets/ŧhemes/${localStorage.theme}.css?nocache=${Math.random()}`
+        css.href = `/assets/themes/${localStorage.theme}.css?nocache=${Math.random()}`
     })
 
     if (!localStorage.msgcolor) localStorage.msgcolor = 'false'
@@ -2143,7 +2143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById('theme-dropdown').addEventListener('change', (event) => {
         localStorage.theme = event.target.value
-        css.setAttribute('href', "/assets/ŧhemes/" + localStorage.theme + '.css?nocache=' + Date.now());
+        css.setAttribute('href', "/assets/themes/" + localStorage.theme + '.css?nocache=' + Date.now());
         const atBottom = document.getElementById('recent-bottom').checked
         if (atBottom)
             document.getElementById('chatlog').scrollTo(0, document.getElementById('chatlog').scrollHeight)
@@ -2158,7 +2158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     document.getElementById('refresh-sp-btn').addEventListener('click', async (event) => {
         await getSoundpacks()
-        css.setAttribute('href', "/assets/ŧhemes/" + localStorage.theme + '.css');
+        css.setAttribute('href', "/assets/themes/" + localStorage.theme + '.css');
     })
     document.getElementById('preview-sp-btn').addEventListener('click', (event) => {
         if (document.getElementById('preview-div').style.display == 'none') {
