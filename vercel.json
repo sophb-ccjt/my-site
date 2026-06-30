@@ -5,12 +5,12 @@
         "frontend": {
             "entrypoint": "frontend",
             "routePrefix": "/",
-            "framework": "null"
+            "framework": "vite"
         },
         "backend": {
             "entrypoint": "backend/apis",
             "routePrefix": "/api",
-            "framework": "null",
+            "framework": "vite",
             "runtime": "nodejs"
         }
     }
