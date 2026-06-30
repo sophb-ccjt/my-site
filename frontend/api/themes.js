@@ -1,6 +1,7 @@
+const fs = require('fs');
 export default async function handler(request, response) {
     fs.readdir("/frontend/assets/themes", (err, files) => {
-        if (err) console.log(err);
+        if (err) console.error(err);
         else {
             files.sort((a, b) => {
                 if (a.includes('(') && !b.includes('(')) {
