@@ -1,5 +1,5 @@
 {
     "cleanUrls": true,
     "outputDirectory": ".",
-    "buildCommand": "cp ./backend/apis ./frontend/api"
+    "buildCommand": "cp -r ./backend/apis ./frontend/api"
 }
