@@ -1,15 +1,5 @@
 {
     "cleanUrls": true,
     "outputDirectory": ".",
-    "buildCommand": "cp /backend/apis /frontend/api",
-    "rewrites": [
-        {
-            "source": "/api/(.*)",
-            "destination": "/backend/apis/$1"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/frontend/$1"
-        }
-    ]
+    "buildCommand": "cp ./backend/apis ./frontend/api"
 }
