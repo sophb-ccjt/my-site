@@ -5,12 +5,12 @@
         "frontend": {
             "entrypoint": "frontend",
             "routePrefix": "/",
-            "framework": "other"
+            "framework": null
         },
         "backend": {
             "entrypoint": "backend/apis",
             "routePrefix": "/api",
-            "framework": "other",
+            "framework": null,
             "runtime": "nodejs"
         }
     }
