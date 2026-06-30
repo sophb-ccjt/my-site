@@ -1,13 +1,17 @@
 {
-  "framework": "services",
-  "experimentalServices": {
-    "frontend": {
-        "entrypoint": "frontend",
-        "routePrefix": "/"
-    },
-    "backend": {
-        "entrypoint": "backend/apis",
-        "routePrefix": "/api"
+    "cleanUrls": true,
+    "framework": "services",
+    "experimentalServices": {
+        "frontend": {
+            "entrypoint": "frontend",
+            "routePrefix": "/",
+            "framework": "other"
+        },
+        "backend": {
+            "entrypoint": "backend/apis",
+            "routePrefix": "/api",
+            "framework": "other",
+            "runtime": "nodejs"
+        }
     }
-  }
 }
