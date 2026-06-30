@@ -1,12 +1,12 @@
 {
-  "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "http": "^0.0.1-security",
-    "ws": "^8.21.0"
-  },
-  "name": "my-site",
-  "scripts": {
-    "build": "echo 'No build needed'"
-  }
+    "dependencies": {
+        "cors": "^2.8.6",
+        "express": "^5.2.1",
+        "http": "^0.0.1-security",
+        "ws": "^8.21.0"
+    },
+    "name": "my-site",
+    "scripts": {
+        "build": "apt install vite -y"
+    }
 }
