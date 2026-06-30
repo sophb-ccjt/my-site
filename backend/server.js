@@ -697,35 +697,6 @@ app.get('/api/teal/ruq/:id', (req, res) => {
     res.send(ruqs[req.params.id])
 });*/
 
-app.get('/api/themes', (req, res) => {
-    fs.readdir("/frontend/assets/themes", (err, files) => {
-        if (err)
-            console.log(err);
-        else {
-            console.log("GET themes\nResponse:", files)
-            files.sort((a, b) => {
-                if (a.includes('(') && !b.includes('(')) {
-                    return -1;
-                } else if (!a.includes('(') && b.includes('(')) {
-                    return 1;
-                } else {
-                    return a.localeCompare(b);
-                }
-            });
-            res.json(files)
-        }
-    })
-});
-app.get('/api/favicons', (req, res) => {
-    fs.readdir("/frontend/favicons", (err, files) => {
-        if (err)
-            console.log(err);
-        else {
-            console.log("GET favicons\nResponse:", files)
-            res.json(files)
-        }
-    })
-});
 
 server.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
