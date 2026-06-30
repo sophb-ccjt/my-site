@@ -161,7 +161,7 @@ if (urlparams.get('theme')) {
     localStorage.theme = urlparams.get('theme')
 }
 let css = document.getElementById('css');
-css.setAttribute('href', "../themes/" + localStorage.theme + '.css');
+css.setAttribute('href', "/assets/ŧhemes/" + localStorage.theme + '.css');
 
 function makeid(length) {
     var result = '';
@@ -284,21 +284,21 @@ let reconnectinterval
 let chatapp
 
 client.soundpack = localStorage.soundpack
-let join = new Audio('./sounds/' + client.soundpack + '/join.wav');
+let join = new Audio('sounds/' + client.soundpack + '/join.wav');
 join.preload = 'auto'
 function joinsound() {
     join = new Audio(join.src)
     join.volume = document.getElementById('sp-volume').value / 100
     join.play()
 }
-let leave = new Audio('./sounds/' + client.soundpack + '/leave.wav');
+let leave = new Audio('sounds/' + client.soundpack + '/leave.wav');
 leave.preload = 'auto'
 function leavesound() {
     leave = new Audio(leave.src)
     leave.volume = document.getElementById('sp-volume').value / 100
     leave.play()
 }
-let mention = new Audio('./sounds/' + client.soundpack + '/mentioned.wav');
+let mention = new Audio('sounds/' + client.soundpack + '/mentioned.wav');
 mention.preload = 'auto'
 let mentioned = 0
 function mentionsound() {
@@ -311,21 +311,21 @@ function mentionsound() {
     mention.volume = document.getElementById('sp-volume').value / 100
     mention.play()
 }
-let msg = new Audio('./sounds/' + client.soundpack + '/message.wav');
+let msg = new Audio('sounds/' + client.soundpack + '/message.wav');
 msg.preload = 'auto'
 function msgsound() {
     msg = new Audio(msg.src)
     msg.volume = document.getElementById('sp-volume').value / 100
     msg.play()
 }
-let reply = new Audio('./sounds/' + client.soundpack + '/reply.wav');
+let reply = new Audio('sounds/' + client.soundpack + '/reply.wav');
 reply.preload = 'auto'
 function replysound() {
     reply = new Audio(reply.src)
     reply.volume = document.getElementById('sp-volume').value / 100
     reply.play()
 }
-let update = new Audio('./sounds/' + client.soundpack + '/update.wav');
+let update = new Audio('sounds/' + client.soundpack + '/update.wav');
 update.preload = 'auto'
 function updatesound() {
     update = new Audio(update.src)
@@ -333,17 +333,17 @@ function updatesound() {
     update.play()
 }
 function loadsounds() {
-    join.src = './sounds/' + client.soundpack + '/join.wav?nocache=' + Math.random()
+    join.src = 'sounds/' + client.soundpack + '/join.wav?nocache=' + Math.random()
     join.load()
-    leave.src = './sounds/' + client.soundpack + '/leave.wav?nocache=' + Math.random()
+    leave.src = 'sounds/' + client.soundpack + '/leave.wav?nocache=' + Math.random()
     leave.load()
-    msg.src = './sounds/' + client.soundpack + '/message.wav?nocache=' + Math.random()
+    msg.src = 'sounds/' + client.soundpack + '/message.wav?nocache=' + Math.random()
     msg.load()
-    reply.src = './sounds/' + client.soundpack + '/reply.wav?nocache=' + Math.random()
+    reply.src = 'sounds/' + client.soundpack + '/reply.wav?nocache=' + Math.random()
     reply.load()
-    mention.src = './sounds/' + client.soundpack + '/mentioned.wav?nocache=' + Math.random()
+    mention.src = 'sounds/' + client.soundpack + '/mentioned.wav?nocache=' + Math.random()
     mention.load()
-    update.src = './sounds/' + client.soundpack + '/update.wav?nocache=' + Math.random()
+    update.src = 'sounds/' + client.soundpack + '/update.wav?nocache=' + Math.random()
     update.load()
 }
 function openurl(url) {
@@ -1549,7 +1549,7 @@ function connect() {
                     let cursor = document.getElementById('cursor-' + user.id)
                     cursor.style.filter = `hue-rotate(${hexToHSV(user.color).h}deg) saturate(${hexToHSV(user.color).s}%) brightness(${hexToHSV(user.color).v}%)`
                     cursor.style.width = localStorage.cursorSize
-                    cursor.src = "./cursors/" + document.getElementById('cursor-texture').value
+                    cursor.src = "cursors/" + document.getElementById('cursor-texture').value
                     cursor.id = "cursor-" + user.id
                     let namediv = document.createElement('div')
                     namediv.id = 'namediv-' + user.id
@@ -1956,7 +1956,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('cursor-texture').addEventListener('change', () => {
         Object.keys(client.ppl).forEach(id => {
             localStorage.cursor = document.getElementById('cursor-texture').value
-            document.getElementById('cursor-' + id).src = './cursors/' + document.getElementById('cursor-texture').value
+            document.getElementById('cursor-' + id).src = 'cursors/' + document.getElementById('cursor-texture').value
         })
     })
     document.getElementById('imp-settings').addEventListener('change', (event) => {
@@ -1980,7 +1980,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!themes.includes(localStorage.theme)) {
         localStorage.theme = "dark"
-        css.setAttribute('href', "../themes/dark.css");
+        css.setAttribute('href', "/assets/ŧhemes/dark.css");
         document.getElementById('theme-dropdown').value = "dark"
     }
     document.getElementById('chat-input').addEventListener('focus', () => {
@@ -2027,7 +2027,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById('theme-dropdown').innerHTML = ""
         await getthemes()
         document.getElementById('css-add').href = `./css+.css?nocache=${Math.random()}`
-        css.href = `../themes/${localStorage.theme}.css?nocache=${Math.random()}`
+        css.href = `/assets/ŧhemes/${localStorage.theme}.css?nocache=${Math.random()}`
     })
 
     if (!localStorage.msgcolor) localStorage.msgcolor = 'false'
@@ -2089,7 +2089,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     if (!localStorage.savedSoundpacks) {
         client.savedSoundpacks = {
-            default: "./sounds/default/"
+            default: "sounds/default/"
         }
         localStorage.savedSoundpacks = client.savedSoundpacks
     }
@@ -2143,7 +2143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById('theme-dropdown').addEventListener('change', (event) => {
         localStorage.theme = event.target.value
-        css.setAttribute('href', "../themes/" + localStorage.theme + '.css?nocache=' + Date.now());
+        css.setAttribute('href', "/assets/ŧhemes/" + localStorage.theme + '.css?nocache=' + Date.now());
         const atBottom = document.getElementById('recent-bottom').checked
         if (atBottom)
             document.getElementById('chatlog').scrollTo(0, document.getElementById('chatlog').scrollHeight)
@@ -2158,7 +2158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     document.getElementById('refresh-sp-btn').addEventListener('click', async (event) => {
         await getSoundpacks()
-        css.setAttribute('href', "../themes/" + localStorage.theme + '.css');
+        css.setAttribute('href', "/assets/ŧhemes/" + localStorage.theme + '.css');
     })
     document.getElementById('preview-sp-btn').addEventListener('click', (event) => {
         if (document.getElementById('preview-div').style.display == 'none') {

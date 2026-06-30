@@ -42,7 +42,7 @@ async function getthemes() {
 
 document.getElementById('theme-dropdown').addEventListener('change', (event) => {
     localStorage.theme = event.target.value
-    css.setAttribute('href', "../themes/" + localStorage.theme + '.css?nocache=' + Date.now());
+    css.setAttribute('href', "/assets/ŧhemes/" + localStorage.theme + '.css?nocache=' + Date.now());
 })
 
 document.addEventListener('DOMContentLoaded', async () =>{

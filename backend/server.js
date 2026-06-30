@@ -7,7 +7,6 @@ const app = express();
 const server = createServer(app);
 const port = 8648;
 const path = require('path');
-const readline = require('readline');
 import { protoplus } from 'protoplus';
 //const ftbi = require('./util/ftbi.js')
 readline.emitKeypressEvents(process.stdin);
@@ -18,7 +17,7 @@ process.stdin.resume();
 //const file = require('./my modules/file.js')
 //const protoplus = require('protoplus')
 //protoplus.expand()
-let specialtags = require("./customtags.json")
+let specialtags = require("./chat/customtags.json");
 
 // function to get client ip - sherlock
 
@@ -30,11 +29,11 @@ function getClientIP(req) {
     return (addr || '').toString().replace(/^::ffff:/, '');
 }
 
-let tokens = JSON.parse(fs.readFileSync("./site db/tokens.json", { encoding: 'utf8', flag: 'r' }))
-let users = fs.readFileSync("./site db/chat/users.json", { encoding: 'utf8', flag: 'r' })
+let tokens = JSON.parse(fs.readFileSync("./db/chat/tokens.json", { encoding: 'utf8', flag: 'r' }))
+let users = fs.readFileSync("./db/chat/users.json", { encoding: 'utf8', flag: 'r' })
 users = JSON.parse(users)
 
-let motds = fs.readFileSync("./site db/motds.txt", { encoding: 'utf8', flag: 'r' }).split("\n")
+let motds = fs.readFileSync("./db/chat/motds.txt", { encoding: 'utf8', flag: 'r' }).split("\n")
 for (let i = 0; i < motds.length; i++) {
     if (motds[i].startsWith("///")) {
         motds.splice(i, 1)
@@ -43,7 +42,7 @@ for (let i = 0; i < motds.length; i++) {
 
 function setUser(token, info) {
     users[token] = info
-    fs.writeFileSync('./site db/chat/users.json', JSON.stringify(users, null, 4));
+    fs.writeFileSync('./db/chat/users.json', JSON.stringify(users, null, 4));
 }
 
 function getTag(token) {
@@ -56,8 +55,8 @@ function getTag(token) {
             color: specialtags[token].color
         };
     }
-    tokens = JSON.parse(fs.readFileSync("./site db/tokens.json", { encoding: 'utf8', flag: 'r' }))
-    let tags = JSON.parse(fs.readFileSync('./site db/tagguide.json'))
+    tokens = JSON.parse(fs.readFileSync("./db/chat/tokens.json", { encoding: 'utf8', flag: 'r' }))
+    let tags = JSON.parse(fs.readFileSync('./db/chat/tagguide.json'))
 
     /* dont mind me just adding stuff */
     //let ctagdata = JSON.parse(fs.readFileSync('./sherrr/ctagdata.json')) // example
@@ -176,7 +175,7 @@ wss.on('connection', function connection(ws, request) {
     const pathname = request.url;
     console.log(`Client (id ${wsId}) connected to ${pathname}`);
     /* banned ips by sherlock */
-    const bannedIPS = require("./bannedips.json");
+    const bannedIPS = require("./db/chat/bannedips.json");
     if (bannedIPS[goodip]) {
         // optional: get the reason
         let reason = bannedIPS[goodip].Reason;
@@ -211,7 +210,7 @@ wss.on('connection', function connection(ws, request) {
                     if (data.fromDisconnect) ws.send(JSON.stringify({
                         m: "chat-cleared"
                     }))
-                    tokens = JSON.parse(fs.readFileSync("./site db/tokens.json", { encoding: 'utf8', flag: 'r' }))
+                    tokens = JSON.parse(fs.readFileSync("./db/chat/tokens.json", { encoding: 'utf8', flag: 'r' }))
                     console.log('user logged in', data)
                     if (!users[data.token]) {
                         setUser(data.token, {
@@ -253,7 +252,7 @@ wss.on('connection', function connection(ws, request) {
                             }));
                         }
                     });
-                    motds = fs.readFileSync("./site db/motds.txt", { encoding: 'utf8', flag: 'r' }).split("\n")
+                    motds = fs.readFileSync("./db/chat/motds.txt", { encoding: 'utf8', flag: 'r' }).split("\n")
                     for (let i = 0; i < motds.length; i++) {
                         if (motds[i].startsWith("///")) {
                             motds.splice(i, 1)
@@ -314,7 +313,7 @@ wss.on('connection', function connection(ws, request) {
                                     console.log('message', data)
                                     if ((connected[wsId].rank > 2 ? true : connected[wsId].rank == 0.5 || connected[wsId].rank == 2 ? Date.now() - connected[wsId].lastChat >= 50 : Date.now() - connected[wsId].lastChat >= 150) && !mutedusers.includes(ip) && !(/ni[gqpb(ck)]{2}(a|er)/gi.test(data.text))) {
                                         users[connected[wsId].token].afk = false
-                                        tokens = JSON.parse(fs.readFileSync("./site db/tokens.json", { encoding: 'utf8', flag: 'r' }))
+                                        tokens = JSON.parse(fs.readFileSync("./db/chat/tokens.json", { encoding: 'utf8', flag: 'r' }))
                                         connected[wsId].lastChat = Date.now()
                                         let tag = getTag(connected[wsId].token).tag
                                         data.a = data.a.replaceAll(connected[wsId].token, "[nope]").replaceAll(btoa(connected[wsId].token), "[nuh uh]").replaceAll(btoa(btoa(connected[wsId].token)), "[buh]")
@@ -585,8 +584,8 @@ app.get('/api/chat/cursors', (req, res) => {
 })
 
 /*app.get('/api/watch/:videoid', (req, res) => {
-    if (fs.readdirSync('./site db/videos/').includes(req.params.videoid + ".mp4")) {
-        let video = fs.readFileSync("./site db/videos/" + req.params.videoid + ".mp4")
+    if (fs.readdirSync('./db/videos/').includes(req.params.videoid + ".mp4")) {
+        let video = fs.readFileSync("./db/videos/" + req.params.videoid + ".mp4")
         res.setHeader('Content-Type', 'video/mp4');
         res.send(video);
     } else {
@@ -623,7 +622,7 @@ app.get('/api/teal/source-wlines', (req, res) => {
     console.log("POST add suggestion")
     console.log('Received data:', req.body);
 
-    let suggestions = JSON.parse(fs.readFileSync("./site db/suggestions.json", { encoding: 'utf8', flag: 'r' }))
+    let suggestions = JSON.parse(fs.readFileSync("./db/suggestions/suggestions.json", { encoding: 'utf8', flag: 'r' }))
 
     suggestions[data.id] = data.data
     if (!!users[data.token]) {
@@ -632,7 +631,7 @@ app.get('/api/teal/source-wlines', (req, res) => {
         if (getTag(data.token).hastag) suggestions[data.id].tag = getTag(data.token).tag
     }
 
-    fs.writeFile('./site db/suggestions.json', JSON.stringify(suggestions, null, 4), 'utf8', () => {
+    fs.writeFile('./db/suggestions/suggestions.json', JSON.stringify(suggestions, null, 4), 'utf8', () => {
         return
     });
 
@@ -650,7 +649,7 @@ app.post('/api/isadmin', (req, res) => {
     console.log("POST mark suggestion")
     console.log('Received data:', req.body);
 
-    let suggestions = JSON.parse(fs.readFileSync("./site db/suggestions.json", { encoding: 'utf8', flag: 'r' }))
+    let suggestions = JSON.parse(fs.readFileSync("./db/suggestions/suggestions.json", { encoding: 'utf8', flag: 'r' }))
 
     if (tokens.admin.includes(data.token) || tokens.coowner.includes(data.token) || tokens.owner.includes(data.token)) {
         if (!!suggestions[data.targetid]) {
@@ -659,7 +658,7 @@ app.post('/api/isadmin', (req, res) => {
             } else {
                 suggestions[data.targetid].completion = data.completion
             }
-            fs.writeFileSync("./site db/suggestions.json", JSON.stringify(suggestions, null, 4))
+            fs.writeFileSync("./db/suggestions/suggestions.json", JSON.stringify(suggestions, null, 4))
             res.status(200).send('suggestion marked');
         } else {
             res.status(404).send("the suggestion id provided is nonexistant.")
@@ -676,7 +675,7 @@ app.get('/api/ss3/extensions/varman', (req, res) => {
 
 app.get('/api/suggestions', (req, res) => {
     console.log("GET suggestions")
-    let response = JSON.parse(fs.readFileSync("./site db/suggestions.json", { encoding: 'utf8', flag: 'r' }))
+    let response = JSON.parse(fs.readFileSync("./db/suggestions/suggestions.json", { encoding: 'utf8', flag: 'r' }))
     console.log('Response:', response)
     res.json(response)
 });*/
