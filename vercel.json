@@ -9,8 +9,7 @@
         },
         "backend": {
             "entrypoint": "backend/apis",
-            "routePrefix": "/api",
-            "framework": "vite"
+            "routePrefix": "/api"
         }
     }
 }
