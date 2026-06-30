@@ -1,8 +1,26 @@
 {
-  "rewrites": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "services",
+  "experimntalServices": [
     {
-      "source": "/frontend/api/:path*",
-      "destination": "/backend/apis/:path*"
+      "name": "web-frontend",
+      "src": "frontend",
+      "routes": [
+        {
+          "src": "/frontend/(.*)",
+          "dest": "/$1"
+        }
+      ]
+    },
+    {
+      "name": "api-backend",
+      "src": "backend",
+      "routes": [
+        {
+          "src": "/backend/apis/(.*)",
+          "dest": "/api/$1"
+        }
+      ]
     }
   ]
 }
