@@ -8,6 +8,6 @@
     },
     "name": "my-site",
     "scripts": {
-        "build": "cp ./backend/apis ./frontend/api"
+        "build": "cp -r ./backend/apis ./frontend/api"
     }
 }
