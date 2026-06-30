@@ -1,15 +1,13 @@
 {
     "cleanUrls": true,
-    "framework": "services",
-    "experimentalServices": {
-        "frontend": {
-            "entrypoint": "frontend",
-            "routePrefix": "/",
-            "framework": "vite"
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/backend/api/$1"
         },
-        "backend": {
-            "entrypoint": "backend/apis",
-            "routePrefix": "/api"
+        {
+            "source": "/(.*)",
+            "destination": "/frontend/$1"
         }
-    }
+    ]
 }
