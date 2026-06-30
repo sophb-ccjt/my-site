@@ -10,8 +10,7 @@
         "backend": {
             "entrypoint": "backend/apis",
             "routePrefix": "/api",
-            "framework": "vite",
-            "runtime": "nodejs"
+            "framework": "vite"
         }
     }
 }
