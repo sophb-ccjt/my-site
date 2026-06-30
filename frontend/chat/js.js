@@ -283,7 +283,7 @@ function send(msg) {
 let reconnectinterval
 let chatapp
 
-client.soundpack = localStorage.soundpack
+client.soundpack = localStorage.soundpack || 'default';
 let join = new Audio('sounds/' + client.soundpack + '/join.wav');
 join.preload = 'auto'
 function joinsound() {
