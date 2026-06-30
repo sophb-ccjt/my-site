@@ -727,13 +727,6 @@ app.get('/api/favicons', (req, res) => {
     })
 });
 
-app.use((req, res) => {
-    console.log(`404 on ${req.originalUrl}`);
-
-    res.status(404)
-    res.sendFile(path.resolve("/frontend/nope/index.html"));
-});
-
 server.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
