@@ -1,4 +1,8 @@
 {
     "cleanUrls": true,
-    "outputDirectory": "."
+    "outputDirectory": ".",
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/$1/index.html" },
+        { "source": "/api/(.*)", "destination": "/api/$1.js" }
+    ]
 }
